@@ -1,0 +1,267 @@
+SVEUČILIŠTE U RIJECI
+ODJEL ZA INFORMATIKU
+Preddiplomski studij informatike
+
+
+
+
+
+
+Seminarski rad iz kolegija
+OSNOVE INFORMATIKE
+
+GRAFIČKE KARTICE
+
+
+
+
+
+
+
+
+
+
+Autor:        Dino Ahmičić
+Mentori:    prof. dr. sc. Sanda Martinčić-Ipšić
+                  dr. sc. Slobodan Beliga 
+
+
+U Rijeci, Prosinac 2020.
+Sadržaj
+1.	Uvod	2
+2.	Povijest	3
+2.1.	MDA kartica	3
+2.2.	3dfx	5
+3.	Arhitektura grafičkih kartica	6
+3.1.	Grafička procesorska jedinica (GPU)	6
+3.2.	Video memorija	6
+3.3.	Video BIOS	7
+3.4.	RAMDAC	7
+3.5.	Izlazna sučelja	8
+3.5.1.	VGA (eng. Video Graphics Array)	8
+3.5.2.	HDMI (eng. High Definition Multimedia Interface)	8
+3.5.3.	DisplayPort	9
+4.	Sučelja matične ploče	10
+4.1.	ISA (eng. Industry Standard Architecture)	10
+4.2.	MCA (eng. Micro Channel Architecture)	10
+4.3.	PCI (eng. Peripheral Component Interconnect)	11
+4.4.	PCIe (eng. Peripherial Component Interconnect Express)	11
+5.	Serijski i paralelni prijenos podataka	12
+5.1.	Serijski prijenos podataka	12
+5.2.	Paralelni prijenos podataka	12
+6.	Zaključak	14
+
+ 
+1.	Uvod
+
+Računalo je uređaj koji ima sposobnost izvođenja raznih procesa, kalkulacija, te operacija pomoću software-a i hardware-skih programa, zadanih preko tzv. ulaznih jedinica.
+Računala također imaju sposobnost pohrane podataka u posebno namjenjenim komponentama, te dohvaćati, manipulirati i ponovno pohraniti te podatke kad god je to potrebno.
+Prva računala prvenstveno su se koristila za numeričke i matematičke kalkulacije, no tijekom godina ljudi su počeli numerički modificirati, te shvatili da računala mogu koristiti i za obradu općih informacija.
+Tijekom vremena zadnjih dva stoljeća, možemo vidjeti eksponencijalni rast i razvoj računala i računalskog inženjerstva. Od diferencijalnog stroja i analitičkog uređaja Charles Babbage-a (ujedno smatran i prvim računalom ikada), analognih te kasnije digitalnih računala, te modernih računala baziranim na John von Neumann-ovoj arhitekturi računala koju koristimo i dan danas. Ujedno računala postaju i mnogo jeftinija, te se ugrađuju u svakodnevno korištene uređaje.
+Današnja računala možemo podijeliti u dvije skupine: hardware ili sklopovlje, te software ili programska oprema. Hardware podrazumijeva sve fizičke, opipljive dijelove računala. Pod hardware spadaju komponente računala, kao što su procesori, matične ploče, memorija, napajanja, grafičke i zvučne kartice, te ulazne i izlazne jedinice kao što su miš, tipkovnica, monitor...
+Software nazivamo dio računala koji nema fizičku masu, već ono podrazumijeva sve programe, podatke, protokole, rutine te procedure koje svako računalo koristi i izvodi.
+U ovome radu ćemo se ipak fokusirati na jednu specifičnu hardware-sku jedinicu koji smo već spomenuli, a to je upravo grafička kartica. Grafička kartica je dio hardware-ske opreme koju koristimo prventsveno za prikaz slike na našemu monitoru. Grafičke, ili alternativno poznate kao video kartice su zapravo uvelike pojednostavili posao računala, iz razloga što se za slikovno i video procesiranje prventveno koristio procesor. Danas je gotovo pa nezamislivo imati računalo bez grafičke kartice, pogotovo jer današnje moderne grafičke kartice svojim brojem tranzistora, procesorskom snagom i video RAM-om omogućavaju bezbrižno izvođenje zahtjevnih grafičkih procesa kao što su video igrice, photoshop te video edit-anje, CAD sustavi, 3D modeliranje, itd…
+ 
+5.	Povijest
+
+5.1.	MDA kartica
+Prva grafička kartica u svijetu je bila MDA (Monochrome display adapter) kartica napravljena u IBM-u ranih 1980.-ih godina. MDA kartica je naravno bila puno drugačija od današnjih kartica po tome da zapravo nije imala nikakvu stvarnu grafiku, već je samo mogla ispisivati jednobojne riječi u tablici od 80 stupaca i 25 linija, na ekranu rezolucije od 720 x 350 piksela.
+
+ 
+Slika 1. IBM-ova MDA kartica
+
+
+MDA kartica se prvenstveno koristila za poslovanje i obradu riječi. Imala je rezervirani prostor od 9 x 14 piksela za svaki pojedini znak, no zapisivala bi ih u 7 x 11 prostor, te ostatak koristila kao razmak između slova. Prvo računalo koje je koristilo MDA karticu je IBM 5151.
+
+ 
+Slika 2. IBM 5151
+MDA je podržavao formatiranje teksta koje koristimo i dan danas, tipa bold ili podvrtavanje, no za bilo kakvu stvarnu grafiku bi se koristili ASCII znakovi. Za razliku od svojih sljedbenika, MDA nije mogao adresirati pojedine piksele, već je rasio u tekstualnom načinu sa ograničenjem od 256 znakova zvan Code Page 437.
+ 
+Slika 3. Code page 437
+
+
+
+
+
+
+Korišteni izvori
+Elliot, John. 2020. seasip.com. Lipanj 8. https://www.seasip.info/VintagePC/mda.html.
+
+5.1.	3dfx
+3dfx je bila tehnološka tvrtka smještena u San Jose, California u Sjedinjenim Američkim Državama. Osnovana 1994. godine bila je pionir devedesetih godina u razvoju prvih 3D grafičkih jedinica svojom Voodoo serijom, Voodoo graphics chip kao prvim čipom sposoban za 3D prikazivanje.
+
+ 
+Slika 4. 3dfx Voodoo Chipset
+
+Nakon nekog niza godina, 3dfx tvrtka postaje frontliner grafičkih kartica, probijajući se na tržište arkadnih igrica, te kasnije tržište igraćih konzola Atari i PC igara podržanih na Microsoft Windows sustavima.
+
+
+
+
+
+
+
+
+Korišteni izvori
+TechSpot. 2020. TechSpot. https://www.techspot.com/article/2067-3dfx/.
+
+ 
+
+5.	Arhitektura grafičkih kartica
+Fizičku arhitekturu grafičkih kartica možemo podijeliti u šest dijelova: grafička procesorska jedinica (GPU), video memorija (VRAM), video BIOS, RAMDAC i izlazna sučelja.
+
+5.1.	Grafička procesorska jedinica (GPU)
+Grafička procesorska jedinica, ili skraćeno GPU jest specijalizirani elektronički čip koji izvodi brze matematičke izračune, prvenstveno u svrhu prikazivanja grafike na računalima. Kao što je spomenuto ranije, za takve zadaće je bio zadužen CPU, no kako su se razvijale grafički intenzivne aplikacije poput CAD sustava, zahtjevano je sve veće i veće procesorske snage. Takve zahtjevne zadaće sada preuzima GPU, te uvelike rasterećuje CPU. Danas su GPU optimizirani da dijele rad sa CPU-om, te mogu biti integrirani skupa sa CPU-om na istom krugu, na grafičkim karticama ili tvornički ugrađen na matičnu ploču. 
+
+ 
+Slika 5. Nvidia N14P GPU
+
+5.2.	Video memorija
+Video memorija je vrsta memorije koja se nalazi na grafičkoj kartici, te u nekim slučajevima i na matičnoj ploči. Toj memoriji pristupaju i video i računalni procesor, te većom količinom te memorije omogućava izvršavanje kompleksnijih grafičkih zadataka. Najčešće je ta memorija u obliku integriranog sklopa na PC (printed circuit) pločici grafičke kartice. U ranim stadijima video memorije, koristila se vrsta dinamičkog RAM-a zvana VRAM (kasnije WRAM, SGRAM), no oko 2003. godine počinje se koristiti DDR tehnologija koja se razvija još i dan danas kao GDDR (Graphics Double Data Rate), od kojeg je najnovija verzija GDDR6.
+ 
+Slika 6. Video memorija
+5.3.	Video BIOS
+Video BIOS sadrži minimalan program za početno postavljanje i kontrolu video kartica. Slično sistemskom BIOS-u, video BIOS pruža skup funckija vezanih za grafiku koji programi koriste za pristup grafičkom sklopovlju, te raznim informacijama vezanih za grafičku karticu, tipa frekvencija takta, količina video memorije… 
+Video BIOS se implementira već od ranih 1980-ih godina kada su se prvi put predstavljene grafičke kartice EGA (Enhanced Graphics Adapter). Prije tog vremena BIOS funkcije je obavljao sistemski BIOS.
+
+ 
+Slika 7. Video BIOS čip
+
+5.4.	RAMDAC
+RAMDAC (eng. random-access-memory digital-to-analog converter), je sklop čija potrebnost zapravo izumire. RAMDAC se koristio kao sklop za pretvaranje digitalnog signala u analogni, u doba CRT (eng. Cathode ray tube) monitora kada su takvi monitori koristili analogne inpute tipa VGA. U današnje vrijeme, korištenjem digitalnih inputa kao što su DVI, HDMI, itd. pokazuje se sve manja potreba implementiranjem ovakve tehnologije.
+5.5.	Izlazna sučelja
+Pod pojmom izlaznih sučelja podrazumijevamo načine spajanja naših grafičkih kartica sa monitorom koji koristimo. Samo neki od načina povezivanja jesu:
+
+5.1.1.	VGA (eng. Video Graphics Array)
+VGA je tehnologija video konektora sa 15 pinova, koja ima sposobnost prenošenja analognog signala između grafičke kartice i monitora. Takav tip video konektora se najviše koristila u doba analognih katodnih monitora. Nastao 1987. godine u IBM-u.
+ 
+Slika 8. VGA kabel
+5.1.2.	HDMI (eng. High Definition Multimedia Interface)
+HDMI je digitalna tehnologija, sposobna za prijenos digitalnog signala video i audio sadržaja preko samo jednog kabela. HDMI tehnologija je danas zapravo jedan od najkorištenijih, ako ne i najkorišteniji način prijenosa. Podržavaju ga većinom svi televizori visoke rezolucije, monitori, projektori… HDMI ujedno postaje prva kabelska tehnologija koja koristi jedan kabel za prijenos slike i zvuka, te uvelike pojednostavljuje stvari vezanih uz nerede nastalih od velike količine kabela potrebnih za prijenos, kao što su recimo RCA konektori.
+ 
+Slika 9. HDMI kabel
+ 
+5.1.3.	DisplayPort
+DisplayPort, slično kao i HDMI, ima sposobnost prijenosa video i audio sadržaja jednim kabelom, te je danas isto u širokoj uportebi. Nastao 2008. Godine pod tvrtkom VESA. Dolazi u dvije varijante: standardni DisplayPort i mini DisplayPort, iako različitih veličina, širina pojasa (eng. bandwidth) im je gotovo identična. Mini DisplayPort je razvio Apple za upotrebu u njihovim računalima.
+ 
+Slika 10. Standardni (lijevo) i Mini (desno) DisplayPort
+
+
+
+
+
+
+
+
+Korišteni izvori
+2019. CableMatters. Studeni 01. https://www.cablematters.com/blog/HDMI/what-is-hdmi.
+2018. ComputerDope. Svibanj 21. https://www.computerhope.com/jargon/v/vidememo.htm.
+n.d. Intel. https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html.
+2020. Wikipedia. Studeni. https://en.wikipedia.org/wiki/Video_card.
+2020. Wikipedia. Prosinac. https://en.wikipedia.org/wiki/VGA_connector.
+Wikipedia. 2020. Wikipedia. Studeni. https://en.wikipedia.org/wiki/DisplayPort.
+
+ 
+5.	Sučelja matične ploče
+Utori i standardi spajanja grafičkih kartica na matične ploče počeli su se razvijati još od ranih 1980-ih godina. Grafičke kartice se spajaju na matičnu ploču putem bus tehnologije, ili bus utorima (eng. bus card slots). Kroz povijest, mogli smo vidjeti razne varijacije bus utora za grafičke kartice. Samo neke od zapaženijih utora za grafičke kartice jesu:
+
+5.1.	ISA (eng. Industry Standard Architecture)
+ISA bus je bio standard korišten za spajanje kartica na matičnu ploču kroz cijele
+1980-te i 1990-te godine. Dizajniran od strane IBM-a 1981. godine, dolazio je u obliku
+8-bitne PC sabirnice ili 16-bitne AT sabirnice.
+ 
+Slika 11. ISA Sabirnica
+
+5.2.	MCA (eng. Micro Channel Architecture)
+Dizajniran također od strane IBM-a 1987. godine, kao 32-bitna sabirnica. Koristio ju je IMB-ov PS/2 (IBM Personal System/2), no i ostala računala do sredine 1990-ih godina.
+ 
+Slika 12. MCA Sabirnica
+5.3.	PCI (eng. Peripheral Component Interconnect)
+Standard za spajanje grafičkih, zvučnih i mrežnih kartica, korišten od 1995. godine do 2005-te. Prvi konektor sa direktnim pristupom sistemskoj memoriji kroz most koji spaja prednju stranu sabirnice. Zamijenio mnoge ranije sabirnice kao što su ISA, MCA, VLB, itd. te kasnije dolaze nove, naprednije verzije PCI sabirnice. 
+ 
+Slika 13. PCI Sabirnica
+5.4.	PCIe (eng. Peripherial Component Interconnect Express)
+Nama možda i najpoznatija vrsta konektora, PCIe još od 2003. godine jest u velikoj upotrebi. Trenutno na šestoj verziji, PCIe koristi dvije trake signala za prijenos podataka: dvije žice za prijenos i dvije žice za primanje. Svaka traka ima sposobnost prenošenja 8-bitne podatkovne pakete. Grafičke kartice koje koriste PCIe sabirnicu, dolaze u verzijama sa 1, 2, 4, 8, 16, ili 32 podatkovne trake. Grafičke kartice visokih performansi obično dolaze sa 16 ili 32 trake (PCIe x32), što naravno pridonosi i većom cijenom, dok kartice nižih performansi dolaze sa manje traka.
+ 
+Slika 14. Rangovi PCIe sabirnica
+Korišteni izvori
+2020. Wikipedia. Studeni. https://en.wikipedia.org/wiki/Video_card.
+
+5.	Serijski i paralelni prijenos podataka
+Jedno zanimljivo poglavlje sabirnica jest način prijenosa podataka između kartica i ostalih komponenti računala. Postoje dva načina prijenosa podataka, a to su serijski i paralelni.
+5.1.	Serijski prijenos podataka
+Serijski prijenos jest način gdje se pojedini bitovi podatka šalju jedan iza drugoga u vremenskom slijedu, kao niz bitova po jednom vodu. Brzina prijenosa se definira kao BAUD, gdje jedan BAUD iznosi 1bit po sekundi. Tipične primjene serijskog prijenosa jest mjerenje, upravljanje i regulacija signala. 
+Serijski prijenos se obično koristi kod sistema gdje brzina prijenosa nije pretežito važna, gdje su udaljenosti između jedinice i računala velike, ili postoje neki zasebni valjnski faktori kao elektromagnetske smetnje.
+ 
+Slika 15. Serijski prijenos podataka
+5.2.	Paralelni prijenos podataka
+Za razliku od serijskog, kod paralelnog prijenosa podatak se prenosi istodobno, preko više fizičkih linija, odnosno za svaki bit jedne riječi osiguran je poseban vodič. Time on postaje brži od serijskog, no mogu se koristiti samo na malim udaljenostima.
+Iako na prvu ruku, pošto je paralelni brži način prijenosa, možemo zaključiti da bi korištenje paralelnog prijenosa bilo bolje i efikasnije, no takav prijenos ima poveći niz nedostataka, zbog toga većina modernih uređaja koriste serijski prijenos.
+Razlog zbog kojeg se ne koristi paralelni prijenos podataka jest, da se ne može povećati frekvencija signala za takav prijenos jer svi signali moraju istovremeno stizati na prijemnik. Povećanjem frekvencije, ne može se zagarantirati isto vrijeme prijenosa za sve signalne linije.
+ 
+Slika 16. Paralelni prijenos podataka
+Tablica 1. Parametri sabirnica
+PARAMETRI SPOMENUTIH SABIRNICA
+NAZIV SABIRNICE	BROJ PODATKOVNIH TRAKA	PROPUSNOST	TIP PRIJENOSA SIGNALA
+ISA	8 ili 16	8 do 16 MB/s	Paralelni
+MCA	32	20 MB/s	Paralelni
+PCI	32 ili 64	132 do 180 MB/s	Paralelni
+PCIe x1 3.0	1	1000 do 2000 MB/s	Serijski
+PCIe x4 3.0	4	4000 do 8000 MB/s	Serijski
+PCIe x8 3.0	8	8000 do 16000 MB/s	Serijski
+PCIe x16 3.0	16	16000 do 32000 MB/s	Serijski
+
+Korišteni izvori
+Gostović, Jadranka. 2016. "Sabirnice." Senj, 01. 18.
+
+ 
+5.	Zaključak
+Grafička kartica je jedna od važnijih komponenti svakodnevnog računala, jer u računalu uvelike pojednostavljuje stvari raspodijelom rada između sistemskog i grafičkog procesora.
+Ovisno o snazi i kvaliteti grafičke kartice, bezbrižno možemo obavljati grafički zahtjevne zadaće kao što su 3D modeliranje, korištenje CAD sustava, Photoshop, video igrice, itd.
+Prema statistici , provedenoj od 2003. do 2020. godine, vodeća kompanija koja drži najveći postotak tržišta za GPU jest Intel sa 62% tržišnog udjela, nakon čega slijedi AMD sa 19% tržišnog udjela, dok Nvidia također dijeli tržišni udio sa AMD-om sa 19%.
+Tijekom zadnjih 7-8 godina, tehnologija vezana uz grafičke kartice je masovno napredovala. Svake godine vidimo nove grafičke kartice na tržištu sa nezamislivo velikim brojem tranzistora, ogromnim hladnjacima i ventilatorima, sve na masivnim PCB pločicama koje bi unatrag 20-30 godina bile smješne za vidjeti.
+Isto tako moramo napomenuti tehnologiju sabirnica i koliko se ona poboljšala. U zadnjih 17 godina dobili smo ukupno 5 verzija PCIe sabirnica, što nam je omogućilo brzo i efikasno prenošenje podataka izmeću grafičkih kartica i računala.
+ 
+
+
+ 
+Indeks
+3dfx, 5
+DisplayPort, 9
+Grafička procesorska jedinica, 6
+Hardware, 3
+HDMI, 8
+ISA, 10
+MCA, 10
+MDA kartica, 4
+
+PCI, 11
+PCIe, 11
+RAMDAC, 7
+Serijski i paralelni prijenos podataka, 12
+Software, 3
+VGA, 8
+Video BIOS, 7
+Video memorija, 6
+ 
+
+
+
+Popis slika
+Slika 1. IBM-ova MDA kartica	3
+Slika 2. IBM 5151	4
+Slika 3. Code page 437	4
+Slika 4. 3dfx Voodoo Chipset	5
+Slika 5. Nvidia N14P GPU	6
+Slika 6. Video memorija	7
+Slika 7. Video BIOS čip	7
+Slika 8. VGA kabel	8
+Slika 9. HDMI kabel	8
+Slika 10. Standardni (lijevo) i Mini (desno) DisplayPort	9
+Slika 11. ISA Sabirnica	10
+Slika 12. MCA Sabirnica	10
+Slika 13. PCI Sabirnica	11
+Slika 14. Rangovi PCIe sabirnica	11
+Slika 15. Serijski prijenos podataka	12
+Slika 16. Paralelni prijenos podataka	12
+
